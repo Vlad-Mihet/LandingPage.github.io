@@ -18,15 +18,15 @@ const KELVIN = 273;
 const key = "82005d27a116c2880c8f0fcb866998a0";
 
 // Check if the browser supports geolocation
-if('geolocation' in navigator){
+if('geolocation' in navigator) {
     navigator.geolocation.getCurrentPosition(setPosition, showError);
-}else{
+} else {
     notificationElement.style.display = "block";
     notificationElement.innerHTML = "<p>Browser doesn't Support Geolocation</p>";
 }
 
 // Set User's Position
-function setPosition(position){
+function setPosition(position) {
     let latitude = position.coords.latitude;
     let longitude = position.coords.longitude;
     
@@ -34,34 +34,33 @@ function setPosition(position){
 }
 
 // Show error if there's any issue with user's geolocation
-function showError(error){
+function showError(error) {
     notificationElement.style.display = "block";
     notificationElement.innerHTML = `<p> ${error.message} </p>`;
 }
 
 // Get weather from API provider
-function getWeather(latitude, longitude){
+function getWeather(latitude, longitude) {
     let api = `http://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${key}`;
-    
     fetch(api)
-        .then(function(response){
+        .then(function(response) {
             let data = response.json();
             return data;
         })
-        .then(function(data){
+        .then(function(data) {
             weather.temperature.value = Math.floor(data.main.temp - KELVIN);
             weather.description = data.weather[0].description;
             weather.iconId = data.weather[0].icon;
             weather.city = data.name;
             weather.country = data.sys.country;
         })
-        .then(function(){
+        .then(function() {
             displayWeather();
         });
 }
 
 // Display Weather to User Interface
-function displayWeather(){
+function displayWeather() {
     iconElement.innerHTML = `<img src="icons/${weather.iconId}.png"/>`;
     tempElement.innerHTML = `${weather.temperature.value}°<span>C</span>`;
     descElement.innerHTML = weather.description;
@@ -69,22 +68,22 @@ function displayWeather(){
 }
 
 // Celsius to Fahrenheit Conversion Function
-function celsiusToFahrenheit(temperature){
+function celsiusToFahrenheit(temperature) {
     return (temperature * 9/5) + 32;
 }
 
 // Change temperature measurement on click from Fahrenheit to Celsius or vice-versa
-tempElement.addEventListener("click", function(){
-    if(weather.temperature.value === undefined) return;
-    
-    if(weather.temperature.unit == "celsius"){
+tempElement.addEventListener("click", function() {
+    if (weather.temperature.value === undefined)
+        return;
+    if (weather.temperature.unit == "celsius") {
         let fahrenheit = celsiusToFahrenheit(weather.temperature.value);
         fahrenheit = Math.floor(fahrenheit);
         
         tempElement.innerHTML = `${fahrenheit}°<span>F</span>`;
         weather.temperature.unit = "fahrenheit";
-    }else{
+    } else {
         tempElement.innerHTML = `${weather.temperature.value}°<span>C</span>`;
-        weather.temperature.unit = "celsius"
+        weather.temperature.unit = "celsius";
     }
 });
