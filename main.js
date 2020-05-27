@@ -58,7 +58,7 @@ function setGreet() {
         document.body.style.backgroundImage = `url(/../landscapes/${setChooseBackground(nightPhotos)})`;
         document.body.style.backgroundSize = "cover"
         document.body.style.color = 'white';
-        document.getElementById('greeting').innerText = 'Good Night, ';
+        document.getElementById('greeting').innerText = 'Good Evening, ';
         // Night
     }
 }
