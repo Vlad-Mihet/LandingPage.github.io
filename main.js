@@ -26,6 +26,8 @@ function showTime() {
     setTimeout(showTime, 1000)
 }
 
+// Add a zero before the mins or secs in case it is the one of the first 9 seconds of the minute, or the first 9 minutes of the hour
+
 function addZero(n) {
     return (parseInt(n, 10) < 10 ? '0' : '') + n;
 }
@@ -36,6 +38,8 @@ function setGreet() {
     let today = new Date(),
         hour = today.getHours();
 
+    // Display a background image randomly based on time of day
+    
     if (hour < 12) {
         document.body.style.backgroundImage = `url(/../landscapes/${setChooseBackground(morningPhotos)})`;
         document.body.style.backgroundSize = "cover"
@@ -63,6 +67,8 @@ function setGreet() {
     }
 }
 
+// Preparing the arrays for setting the background image randomly for each time of the day
+
 let eveningPhotos = ['evening1', 'evening2', 'evening3'];
 let morningPhotos = ['morning1', 'morning2', 'morning3', 'morning4'];
 let afternoonPhotos = ['afternoon1', 'afternoon2', 'afternoon3', 'afternoon4'];
@@ -74,7 +80,6 @@ function setChooseBackground(array) {
 }
 
 // Get Name
-
 function getName() {
     if (localStorage.getItem('name') === null) {
         name.textContent = '[Enter Name]';
@@ -84,7 +89,6 @@ function getName() {
 }
 
 // Set Name
-
 function setName(e) {
     if (e.type == 'keypress') {
         // Check if 'Enter' was pressed
@@ -98,7 +102,6 @@ function setName(e) {
 }
 
 // Get Focus
-
 function getFocus() {
     if (localStorage.getItem('focus') === null) {
         focus.textContent = '[Enter Focus]';
@@ -108,7 +111,6 @@ function getFocus() {
 }
 
 // Set Focus
-
 function setFocus(e) {
     if (e.type == 'keypress') {
         // Check if 'Enter' was pressed
@@ -121,10 +123,14 @@ function setFocus(e) {
     }
 }
 
+// Update the name and focus on Enter or on clicking on anywhere else on the page
+
 name.addEventListener('keypress', setName);
 name.addEventListener('blur', setName);
 focus.addEventListener('keypress', setFocus);
 focus.addEventListener('blur', setFocus);
+
+// Use the functions defined previously
 
 showTime();
 setGreet();
