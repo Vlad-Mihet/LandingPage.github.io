@@ -21,7 +21,7 @@ function showTime() {
     hour = hour % 12 || 12;
 
     //Output 
-    time.innerHTML = `${hour}<span>:</span>${addZero(min)}<span>:</span>${addZero(sec)}`;
+    time.innerHTML = `${hour}<span>:</span>${addZero(min)}<span>:</span>${addZero(sec)} ${AmPm}`;
 
     setTimeout(showTime, 1000)
 }
@@ -40,25 +40,25 @@ function setGreet() {
         document.body.style.backgroundImage = `url(/../landscapes/${setChooseBackground(morningPhotos)})`;
         document.body.style.backgroundSize = "cover"
         document.body.style.color = 'white';
-        document.getElementById('greeting').innerText = 'Good Morning!';
+        document.getElementById('greeting').innerText = 'Good Morning, ';
         // Morning
     } else if (hour < 16) {
         document.body.style.backgroundImage = `url(/../landscapes/${setChooseBackground(afternoonPhotos)})`;
         document.body.style.backgroundSize = "cover";
         document.body.style.color = 'white';
-        document.getElementById('greeting').innerText = 'Good Afternoon!';
+        document.getElementById('greeting').innerText = 'Good Afternoon, ';
         // Afternoon
     } else if (hour < 20) {
         document.body.style.backgroundImage = `url(/../landscapes/${setChooseBackground(eveningPhotos)})`;
         document.body.style.backgroundSize = "cover"
         document.body.style.color = 'white';
-        document.getElementById('greeting').innerText = 'Good Evening!';
+        document.getElementById('greeting').innerText = 'Good Evening, ';
         // Evening
     } else {
         document.body.style.backgroundImage = `url(/../landscapes/${setChooseBackground(nightPhotos)})`;
         document.body.style.backgroundSize = "cover"
         document.body.style.color = 'white';
-        document.getElementById('greeting').innerText = 'Good Night!';
+        document.getElementById('greeting').innerText = 'Good Night, ';
         // Night
     }
 }
