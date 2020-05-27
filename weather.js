@@ -1,7 +1,4 @@
-// Tutorial by http://youtube.com/CodeExplained
-// api key : 82005d27a116c2880c8f0fcb866998a0
-
-// SELECT ELEMENTS
+// Select Elements
 const iconElement = document.querySelector(".weather-icon");
 const tempElement = document.querySelector(".temperature-value p");
 const descElement = document.querySelector(".temperature-description p");
@@ -15,12 +12,12 @@ weather.temperature = {
     unit : "celsius"
 }
 
-// APP CONSTS AND VARS
+// APP Consts and Vars
 const KELVIN = 273;
-// API KEY
+// API Key
 const key = "82005d27a116c2880c8f0fcb866998a0";
 
-// CHECK IF BROWSER SUPPORTS GEOLOCATION
+// Check if the browser supports geolocation
 if('geolocation' in navigator){
     navigator.geolocation.getCurrentPosition(setPosition, showError);
 }else{
@@ -28,7 +25,7 @@ if('geolocation' in navigator){
     notificationElement.innerHTML = "<p>Browser doesn't Support Geolocation</p>";
 }
 
-// SET USER'S POSITION
+// Set User's Position
 function setPosition(position){
     let latitude = position.coords.latitude;
     let longitude = position.coords.longitude;
@@ -36,13 +33,13 @@ function setPosition(position){
     getWeather(latitude, longitude);
 }
 
-// SHOW ERROR WHEN THERE IS AN ISSUE WITH GEOLOCATION SERVICE
+// Show error if there's any issue with user's geolocation
 function showError(error){
     notificationElement.style.display = "block";
     notificationElement.innerHTML = `<p> ${error.message} </p>`;
 }
 
-// GET WEATHER FROM API PROVIDER
+// Get weather from API provider
 function getWeather(latitude, longitude){
     let api = `http://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${key}`;
     
@@ -63,7 +60,7 @@ function getWeather(latitude, longitude){
         });
 }
 
-// DISPLAY WEATHER TO UI
+// Display Weather to User Interface
 function displayWeather(){
     iconElement.innerHTML = `<img src="icons/${weather.iconId}.png"/>`;
     tempElement.innerHTML = `${weather.temperature.value}°<span>C</span>`;
@@ -71,12 +68,12 @@ function displayWeather(){
     locationElement.innerHTML = `${weather.city}, ${weather.country}`;
 }
 
-// C to F conversion
+// Celsius to Fahrenheit Conversion Function
 function celsiusToFahrenheit(temperature){
     return (temperature * 9/5) + 32;
 }
 
-// WHEN THE USER CLICKS ON THE TEMPERATURE ELEMENET
+// Change temperature measurement on click from Fahrenheit to Celsius or vice-versa
 tempElement.addEventListener("click", function(){
     if(weather.temperature.value === undefined) return;
     
