@@ -47,19 +47,19 @@ function setGreet() {
         document.getElementById('greeting').innerText = 'Good Morning, ';
         // Morning
     } else if (hour < 16) {
-        document.body.style.backgroundImage = `url(/../landscapes/${setChooseBackground(afternoonPhotos)})`;
+        document.body.style.backgroundImage = `url(/landscapes/${setChooseBackground(afternoonPhotos)})`;
         document.body.style.backgroundSize = "cover";
         document.body.style.color = 'white';
         document.getElementById('greeting').innerText = 'Good Afternoon, ';
         // Afternoon
     } else if (hour < 20) {
-        document.body.style.backgroundImage = `url(/../landscapes/${setChooseBackground(eveningPhotos)})`;
+        document.body.style.backgroundImage = `url(/landscapes/${setChooseBackground(eveningPhotos)})`;
         document.body.style.backgroundSize = "cover"
         document.body.style.color = 'white';
         document.getElementById('greeting').innerText = 'Good Evening, ';
         // Evening
     } else {
-        document.body.style.backgroundImage = `url(/../landscapes/${setChooseBackground(nightPhotos)})`;
+        document.body.style.backgroundImage = `url(/landscapes/${setChooseBackground(nightPhotos)})`;
         document.body.style.backgroundSize = "cover"
         document.body.style.color = 'white';
         document.getElementById('greeting').innerText = 'Good Evening, ';
