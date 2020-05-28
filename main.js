@@ -41,7 +41,7 @@ function setGreet() {
     // Display a background image randomly based on time of day
     
     if (hour < 12) {
-        document.body.style.backgroundImage = `url(/../landscapes/${setChooseBackground(morningPhotos)})`;
+        document.body.style.backgroundImage = `url(/landscapes/${setChooseBackground(morningPhotos)})`;
         document.body.style.backgroundSize = "cover"
         document.body.style.color = 'white';
         document.getElementById('greeting').innerText = 'Good Morning, ';
